@@ -14,6 +14,7 @@ func main() {
 		panic(err)
 	}
 	r := routes.SetupRoutes(app)
+	defer app.DB.Close()
 	app.Logger.Println("we are runing our app")
 	server := &http.Server{
 		Addr:         ":8000",
